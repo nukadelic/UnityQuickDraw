@@ -1,9 +1,20 @@
+
+WIP : Forked from Miguel Ferreira 
+
 # UnityShapes
 Draw anti-aliased, GPU-instance-supported, 0 allocation shapes (circle,line,arrow) with one line of code in Unity
 
-![](screenshot.png)
+![](Doc~/screenshot.png)
 
+# Installation 
 
+### Via git
+
+Edit the `manifest.json` file located in the `Packages` folder of your unity project and
+add the follwing line to the list of `dependencies`:
+```json
+"com.nukadelic.unityshapes": "https://github.com/nukadelic/UnityShapes.git"
+```
 
 Couldn't´t be simpler:
 
