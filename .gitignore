@@ -24,3 +24,6 @@ sysinfo.txt
 *.unitypackage
 Plugins/Editor/JetBrains/
 Plugins/Editor/JetBrains.meta
+
+# Remove auto generated file 
+Resources/*
