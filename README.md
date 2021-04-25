@@ -2,13 +2,14 @@
 WIP : Forked from Miguel Ferreira 
 
 # UnityShapes
-Draw anti-aliased, GPU-instance-supported, 0 allocation shapes (circle,line,arrow) with one line of code in Unity
 
-![](Doc~/screenshot.png)
+* Draw 2D anti-aliased, GPU-instance-supported, 0 allocation shapes ( circle,line,arrow ) with one line of code in Unity
+* Draw Labels ( WIP ) 
+* Draw 3D Shapes ( WIP ) 
+
+![](https://i.imgur.com/vaSg7r9.png)
 
 # Installation 
-
-### Via git
 
 Edit the `manifest.json` file located in the `Packages` folder of your unity project and
 add the follwing line to the list of `dependencies`:
@@ -16,90 +17,30 @@ add the follwing line to the list of `dependencies`:
 "com.nukadelic.unityshapes": "https://github.com/nukadelic/UnityShapes.git"
 ```
 
-Couldn't´t be simpler:
-
-```c#
-Circle.Draw(new CircleInfo{
-				center = transform.position,
-				forward = transform.forward,
-				radius = 1f,
-				fillColor = Color.Red
-			});
-```
-
-
-
-Lots of customization options
-
-
-
-```c#
-public struct CircleInfo
+Draw can be noramally called within the update function:
+```cs
+...
+void Update()
 {
-  public float radius;
-  public Vector3 center;
-  public Vector3 forward;
+	if( drawCircle ) Draw.circle( points[ i ] , 0.05f , Color.white, Color.black, 0.2f );
 
-  public Color fillColor;
+	if( drawPoint ) Draw.point( points[ i ], Color.yellow );
 
-  public bool bordered;
-  public Color borderColor;
-  public float borderWidth;
+	if( drawLabels ) Draw.label( points[ i ], i.ToString(), Color.white );
 
-  public bool isSector;
-  public float sectorInitialAngleInDegrees;
-  public float sectorArcLengthInDegrees;
+	if (i > 0 && drawRods) Draw.rod(points[i], points[ i - 1 ], Color.red);
+
+	if (i > 0 && drawLines) Draw.line(points[i], points[ i - 1 ], Color.red);
 }
 ```
 
-
-
-```c#
-public struct LineInfo
+If you want to draw both in play mode and in editor ( instead of using Gizmos ) , implement MonoDraw and override the `OnDraw()` method: 
+```cs
+public class ScriptName : MonoDraw
 {
-  public Vector3 startPos;
-  public Vector3 endPos;
-  public Color fillColor;
-  public Vector3 forward;
-  public float width;
-
-  public bool bordered;
-  public Color borderColor;
-  public float borderWidth;
-
-  public bool dashed;
-  public float distanceBetweenDashes;
-  public float dashLength;
-
-  public bool startArrow;
-  public bool endArrow;
-
-  public float arrowWidth;
-  public float arrowLength;
+	public override void OnDraw()
+	{
+		Draw.Point( ... );
+	}
 }
 ```
-
-
-
-```c#
- public struct PolygonInfo
- {
-     public int sides;
-     public Vector3 center;
-     public float size;
-
-     public Color color;
-
-     public bool bordered;
-     public float borderWidth;
-     public Color borderColor;
-
-     public Quaternion rotation;
- }
-```
-
-
-
-
-
-Tested on standalone and WebGL, but should work on mobile as well.
