@@ -5,7 +5,7 @@ Shader "Hidden/Shapes/Unlit"
     }
     SubShader
     {
-        Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
+        Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "DisableBatching" = "true" }
         LOD 100
 
         Pass

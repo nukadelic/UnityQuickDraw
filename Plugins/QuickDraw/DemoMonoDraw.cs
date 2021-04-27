@@ -39,22 +39,28 @@ namespace QuickDraw.Demo
 
             Draw.matrix = transform.localToWorldMatrix;
 
-            
-
             for (var i = 0; i < points.Count; ++i)
             {
                 var t = i / (float) points.Count;
 
                 if (drawLabels) Draw.label(points[i], i.ToString(), Color.white);
 
-                if (drawCircle) Draw.circle(points[i], 0.05f, Color.Lerp(Color.yellow, Color.green, t) , Color.black, 0.2f);
+                if (drawCircle) Draw.circle(points[i], 0.05f, Color.Lerp(Color.yellow, Color.white, t) , Color.black, 0.2f);
 
-                if (drawPoint) Draw.point( points[i] , Color.Lerp( Color.yellow, Color.green, t ) );
+                if (drawPoint) Draw.point( points[i] , Color.Lerp( Color.yellow, Color.white, t ) );
 
-                if (drawLines && i > 0) Draw.line(points[i], points[i - 1], Color.red);
+                if (drawLines && i > 0) Draw.line(points[i], points[i - 1], Color.magenta);
 
-                if (drawRods && i > 0 ) Draw.rod(points[i], points[ i - 1 ], Color.red);
+                if (drawRods && i > 0 ) Draw.rod(points[i], points[ i - 1 ], Color.black);
             }
+
+            // Draw Axis 
+            Draw.rod(Vector3.zero, Vector3.forward, Color.blue, 0.05f);
+            Draw.pyramid( Vector3.forward, Vector3.forward, Color.blue, 0.1f );
+            Draw.rod(Vector3.zero, Vector3.right, Color.red, 0.05f);
+            Draw.pyramid(Vector3.right, Vector3.right, Color.red, 0.1f);
+            Draw.rod(Vector3.zero, Vector3.up, Color.green, 0.05f);
+            Draw.pyramid(Vector3.up, Vector3.up, Color.green, 0.1f);
         }
 
         void Calculate()

@@ -136,7 +136,7 @@ GameObject:
   m_Layer: 0
   m_Name: Script
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -158,11 +158,11 @@ MonoBehaviour:
   max: 1
   angleStartDeg: 0
   angleRangeDeg: 360
-  drawLabels: 0
+  drawLabels: 1
   drawCircle: 0
   drawPoint: 1
   drawRods: 0
-  drawLines: 0
+  drawLines: 1
 --- !u!4 &698581198
 Transform:
   m_ObjectHideFlags: 0
