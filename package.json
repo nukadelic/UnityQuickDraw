@@ -1,8 +1,14 @@
 {
-    "name": "com.nukadelic.UnityShapes",
-    "displayName": "UnityShapes",
-    "version": "0.1.0",
+    "name": "com.nukadelic.unityquickdraw",
+    "displayName": "Unity Quick Draw",
+    "description" : "GPU instanced shape drawing in editor and runtime",
+    "version": "0.1.3",
+    "license": "MIT",
     "unity": "2018.3",
     "dependencies": {
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nukadelic/UnityQuickDraw.git"
+    },
 }
