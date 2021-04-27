@@ -39,17 +39,21 @@ namespace QuickDraw.Demo
 
             Draw.matrix = transform.localToWorldMatrix;
 
-            for ( var i = 0; i < points.Count; ++i )
+            
+
+            for (var i = 0; i < points.Count; ++i)
             {
-                if( drawCircle ) Draw.circle( points[ i ] , 0.05f , Color.white, Color.black, 0.2f );
+                var t = i / (float) points.Count;
 
-                if( drawPoint ) Draw.point( points[ i ], Color.yellow );
+                if (drawLabels) Draw.label(points[i], i.ToString(), Color.white);
 
-                if( drawLabels ) Draw.label( points[ i ], i.ToString(), Color.white );
+                if (drawCircle) Draw.circle(points[i], 0.05f, Color.Lerp(Color.yellow, Color.green, t) , Color.black, 0.2f);
 
-                if (i > 0 && drawRods) Draw.rod(points[i], points[ i - 1 ], Color.red);
+                if (drawPoint) Draw.point( points[i] , Color.Lerp( Color.yellow, Color.green, t ) );
 
-                if (i > 0 && drawLines) Draw.line(points[i], points[ i - 1 ], Color.red);
+                if (drawLines && i > 0) Draw.line(points[i], points[i - 1], Color.red);
+
+                if (drawRods && i > 0 ) Draw.rod(points[i], points[ i - 1 ], Color.red);
             }
         }
 

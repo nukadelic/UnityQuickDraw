@@ -156,7 +156,7 @@ namespace QuickDraw
 			var materialPropertyBlock = GetMaterialPropertyBlock(polygonInfo);
 			var material = GetMaterial(polygonInfo);
 			
-			Graphics.DrawMesh(polygonMesh,polygonMatrix,material,0,null,0,materialPropertyBlock);
+			Graphics.DrawMesh(polygonMesh,polygonMatrix,material,0, Common.camera, 0,materialPropertyBlock);
 		}
 	}
 }

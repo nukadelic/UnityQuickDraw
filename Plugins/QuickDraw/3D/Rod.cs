@@ -15,16 +15,14 @@ namespace QuickDraw
         {
             if( _mesh == null ) _mesh = TriangularRod();
 
-            if ( _mat == null ) _mat = new Material( Shader.Find("Hidden/Shapes/Unlit") );
+            if ( _mat == null ) _mat = Common.MaterialUnlitNext;
 
-            if( _block == null ) _block = new MaterialPropertyBlock();
+            if ( _block == null ) _block = new MaterialPropertyBlock();
 
             _block.SetColor( "_FillColor", color );
-            _block.SetFloat("_AASmoothing", 1.5f);
+            _block.SetFloat("_AASmoothing", Common.AASmoothing );
 
-            Graphics.DrawMesh( _mesh, matrix, _mat, 0, null, 0, _block );
-
-            //Graphics.DrawMeshInstanced( _mesh, 0, material, matricies, coutn,  )
+            Graphics.DrawMesh( _mesh, matrix, _mat, 0, Common.camera , 0, _block );
         }
 
         public static Mesh TriangularRod()

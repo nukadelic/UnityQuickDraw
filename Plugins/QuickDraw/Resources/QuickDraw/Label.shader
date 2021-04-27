@@ -3,7 +3,7 @@ Shader "Hidden/Shapes/Label"
 	Properties {}
 	SubShader
 	{
-		Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "DisableBatching" = "true" }
+		Tags { "RenderType" = "Transparent" "Queue" = "Transparent+175" "DisableBatching" = "true" }
 		LOD 100
 
 		Pass

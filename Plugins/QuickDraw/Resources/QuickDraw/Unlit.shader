@@ -5,7 +5,7 @@ Shader "Hidden/Shapes/Unlit"
     }
     SubShader
     {
-        Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "DisableBatching" = "true" }
+        Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
         LOD 100
 
         Pass
@@ -17,6 +17,8 @@ Shader "Hidden/Shapes/Unlit"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+
+            #pragma multi_compile_instancing
 
             #include "UnityCG.cginc"
 
@@ -39,10 +41,6 @@ Shader "Hidden/Shapes/Unlit"
                 UNITY_DEFINE_INSTANCED_PROP(float, _AASmoothing)
             UNITY_INSTANCING_BUFFER_END(CommonProps)
 
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
-
-
             v2f vert(appdata v)
             {
                 v2f o;
@@ -60,16 +58,16 @@ Shader "Hidden/Shapes/Unlit"
             {
                 UNITY_SETUP_INSTANCE_ID(i);
 
-                float aaSmoothing = UNITY_ACCESS_INSTANCED_PROP(CommonProps, _AASmoothing);
                 fixed4 fillColor = UNITY_ACCESS_INSTANCED_PROP(CommonProps, _FillColor);
+                //float aaSmoothing = UNITY_ACCESS_INSTANCED_PROP(CommonProps, _AASmoothing);
 
-                float distanceToCenter = length(i.uv);
+                //float distanceToCenter = length(i.uv);
 
-                float distancePerPixel = fwidth(distanceToCenter);
-                float distanceAlphaFactor = 1.0 - smoothstep(1.0 - distancePerPixel * aaSmoothing, 1.0, distanceToCenter);
-                //float halfSmoothFactor = 0.5f * distancePerPixel * aaSmoothing;
+                //float distancePerPixel = fwidth(distanceToCenter);
+                //float distanceAlphaFactor = 1.0 - smoothstep(1.0 - distancePerPixel * aaSmoothing, 1.0, distanceToCenter);
+                ////float halfSmoothFactor = 0.5f * distancePerPixel * aaSmoothing;
 
-                fillColor.a *= distanceAlphaFactor;
+                //fillColor.a *= distanceAlphaFactor;
 
                 return fillColor;
             }

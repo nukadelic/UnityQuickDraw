@@ -142,7 +142,7 @@ namespace QuickDraw
 			var matrix = GetTRSMatrix(circleInfo);
 			var material = GetMaterial(circleInfo);
 			
-			Graphics.DrawMesh(mesh,matrix,material,0,null,0,materialPropertyBlock);
+			Graphics.DrawMesh(mesh,matrix,material,0, Common.camera , 0,materialPropertyBlock);
 		}
 
 		static void setSectorAngles(MaterialPropertyBlock block, float initialAngleDegrees, float sectorArcLengthDegrees)

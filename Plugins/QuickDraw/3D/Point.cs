@@ -13,15 +13,15 @@ namespace QuickDraw
         public static void Draw(Matrix4x4 matrix, Color color)
         {
             if (_mesh == null) _mesh = Octahedron();
-
-            if (_mat == null) _mat = new Material(Shader.Find("Hidden/Shapes/Unlit"));
+            
+            if ( _mat == null ) _mat = Common.MaterialUnlitNext;
 
             if (_block == null) _block = new MaterialPropertyBlock();
 
             _block.SetColor("_FillColor", color);
-            _block.SetFloat("_AASmoothing", 1.5f);
+            _block.SetFloat("_AASmoothing", Common.AASmoothing );
 
-            Graphics.DrawMesh(_mesh, matrix, _mat, 0, null, 0, _block);
+            Graphics.DrawMesh(_mesh, matrix, _mat, 0, Common.camera , 0, _block);
         }
 
         public static Mesh Octahedron()

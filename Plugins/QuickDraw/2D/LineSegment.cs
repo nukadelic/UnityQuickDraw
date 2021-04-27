@@ -320,7 +320,7 @@ namespace QuickDraw
 			var arrowHeadMesh = GetArrowHeadMesh();
 			var arrowHeadMaterial = GetArrowHeadMaterial();
 			
-			Graphics.DrawMesh(arrowHeadMesh,matrix,arrowHeadMaterial,0,null,0,materialPropertyBlock);
+			Graphics.DrawMesh(arrowHeadMesh,matrix,arrowHeadMaterial,0,Common.camera,0,materialPropertyBlock);
 		}
 
 
@@ -353,7 +353,7 @@ namespace QuickDraw
 
 			FillPropertyBlock(materialPropertyBlock, lineInfo, lineLength);
 			
-			Graphics.DrawMesh(lineSegmentMesh,matrix,lineMaterial,0,null,0,materialPropertyBlock);
+			Graphics.DrawMesh(lineSegmentMesh,matrix,lineMaterial,0,Common.camera, 0,materialPropertyBlock);
 
 
 			if (lineInfo.endArrow)
