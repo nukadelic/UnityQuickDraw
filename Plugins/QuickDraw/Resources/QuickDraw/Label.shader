@@ -1,10 +1,6 @@
 Shader "Hidden/Shapes/Label"
 {
-	Properties
-	{
-		_MainTex ("Albedo (RGB)", 2D) = "black" {}
-		_AASmoothing( "AA Smoothing", Float ) = 1.5
-	}
+	Properties {}
 	SubShader
 	{
 		Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "DisableBatching" = "true" }
@@ -20,16 +16,12 @@ Shader "Hidden/Shapes/Label"
 			#pragma vertex vert
 			#pragma fragment frag
 
-			#pragma multi_compile _ BORDER 
-			#pragma multi_compile _ SECTOR
 			#pragma multi_compile_instancing
 
 			#include "UnityCG.cginc"
 
-			sampler2D _MainTex;
+			//float _AASmoothing;
 
-			float _AASmoothing;
-			
 			struct appdata
 			{
 				float4 vertex : POSITION;
@@ -43,6 +35,8 @@ Shader "Hidden/Shapes/Label"
 				float4 vertex : SV_POSITION;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
+			
+			sampler2D QuickDraw_LabelTex;
 
 			UNITY_INSTANCING_BUFFER_START(CommonProps)
 				UNITY_DEFINE_INSTANCED_PROP(fixed4, _FillColor)
@@ -121,16 +115,18 @@ Shader "Hidden/Shapes/Label"
 				//float2 uvs = float2(remap(.25, 1.25, -1.3846789, 1.3846789, i.uv.x), i.uv.y); // in Label.cs without +1 IndexOf
 				float2 uvs = float2(remap(-1, 1, -3, 3, i.uv.x), i.uv.y); // in Label.cs IndexOf() + 1
 
+				//sampler2D _MainTex = QuickDraw_LabelTex;
+
 				float2 uvs0 = IndexToUV(ii[0][0], ii[0][1], uvs);
-				fixed4 c0 = tex2D(_MainTex, uvs0);
+				fixed4 c0 = tex2D(QuickDraw_LabelTex, uvs0);
 				c0 = UV.x >= 0.333333 ? 0 : c0;
 
 				float2 uvs1 = IndexToUV(ii[1][0] - 1, ii[1][1], uvs);
-				fixed4 c1 = tex2D(_MainTex, uvs1);
+				fixed4 c1 = tex2D(QuickDraw_LabelTex, uvs1);
 				c1 = UV.x <= 0.333333 || UV.x >= 0.666666 ? 0 : c1;
 
 				float2 uvs2 = IndexToUV(ii[2][0] - 2, ii[2][1], uvs);
-				fixed4 c2 = tex2D(_MainTex, uvs2);
+				fixed4 c2 = tex2D(QuickDraw_LabelTex, uvs2);
 				c2 = UV.x <= 0.666666 ? 0 : c2;
 
 				fixed4 c = ( c0 + c1 + c2 ); // +c3 );

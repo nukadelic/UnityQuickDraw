@@ -7,6 +7,7 @@ namespace QuickDraw
     {
         public static string WinAltChars = " ☺☻♥♦♣♠•◘○◙♂♀♪♫☼►◄↕‼¶§▬↨↑↓→←∟↔▲▼ !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~⌂ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒáíóúñÑªº¿⌐¬½¼¡«»░▒▓│┤╡╢╖╕╣║╗╝╜╛┐└┴┬├─┼╞╟╚╔╩╦╠═╬╧╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀αßΓπΣσµτΦΘΩδ∞φε∩≡±≥≤⌠⌡÷≈°∙·√ⁿ²■ ";
 
+        static Texture2D _tex;
         static Mesh _mesh;
         static Material _mat;
         static MaterialPropertyBlock _block;
@@ -19,11 +20,18 @@ namespace QuickDraw
 
             if (_mesh == null) _mesh = Quad();
 
+            if( _tex == null ) _tex = Resources.Load<Texture2D>( "QuickDraw/unifont_8x16" );
+
             if (_mat == null ) 
             {
                 _mat = new Material(Shader.Find("Hidden/Shapes/Label"));
-                _mat.SetTexture("_MainTex", Resources.Load<Texture2D>("QuickDraw/unifont_8x16") );
-                _mat.SetFloat("_AASmoothing", Common.AASmoothing);
+                
+                _mat.enableInstancing = true;
+
+                //_mat.SetTexture("_MainTex", _tex );
+                //_mat.SetFloat("_AASmoothing", Common.AASmoothing);
+
+                Shader.SetGlobalTexture("QuickDraw_LabelTex", _tex);
             }
 
             if ( _block == null ) _block = new MaterialPropertyBlock();
