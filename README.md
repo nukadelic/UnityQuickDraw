@@ -1,7 +1,4 @@
-
-WIP : Forked from Miguel Ferreira 
-
-# UnityShapes
+# Unity Quick Draw 
 
 * Draw 2D anti-aliased, GPU-instance-supported, 0 allocation shapes ( circle,line,arrow ) with one line of code in Unity
 * Draw Labels ( WIP ) 
@@ -14,7 +11,7 @@ WIP : Forked from Miguel Ferreira
 Edit the `manifest.json` file located in the `Packages` folder of your unity project and
 add the follwing line to the list of `dependencies`:
 ```json
-"com.nukadelic.unityshapes": "https://github.com/nukadelic/UnityShapes.git"
+"com.nukadelic.unityquickdraw": "https://github.com/nukadelic/UnityQuickDraw.git"
 ```
 
 Draw can be noramally called within the update function:
@@ -44,3 +41,5 @@ public class ScriptName : MonoDraw
 	}
 }
 ```
+
+WIP : Forked from Miguel Ferreira 
