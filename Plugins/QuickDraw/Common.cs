@@ -55,7 +55,7 @@ namespace QuickDraw
                     return _cameraEditor;
                 }
 #endif
-                if( _cameraRuntime == null ) _cameraRuntime = Camera.main ?? Camera.current;
+                if( _cameraRuntime == null ) _cameraRuntime = Camera.main ?? Camera.current ?? Object.FindObjectOfType<Camera>();
                 return _cameraRuntime;
             }
 

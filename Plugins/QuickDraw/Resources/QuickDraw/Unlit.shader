@@ -47,6 +47,7 @@ Shader "Hidden/Shapes/Unlit"
 
                 UNITY_SETUP_INSTANCE_ID(v);
                 UNITY_TRANSFER_INSTANCE_ID(v, o);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.vertex.xy;

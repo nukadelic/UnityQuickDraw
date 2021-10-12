@@ -34,6 +34,7 @@ Shader "Hidden/Shapes/Label"
 				float2 uv : TEXCOORD0;
 				float4 vertex : SV_POSITION;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
+				UNITY_VERTEX_OUTPUT_STEREO
 			};
 			
 			sampler2D QuickDraw_LabelTex;
@@ -47,9 +48,17 @@ Shader "Hidden/Shapes/Label"
 			{
 				v2f o;
 
+
 				UNITY_SETUP_INSTANCE_ID(v);
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 
+				//UNITY_INITIALIZE_OUTPUT(v2f, o);				
+				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);		// SOLUTION
+
+//#if UNITY_SINGLE_PASS_STEREO
+				//UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+//#endif
+				//o.vertex = UnityWorldToClipPos(v.vertex);
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.vertex.xy;
 				return o;
@@ -85,7 +94,21 @@ Shader "Hidden/Shapes/Label"
 			{
 				UNITY_SETUP_INSTANCE_ID(i);
 
+				//UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);					// Insert 
+
 				fixed4 fillColor = UNITY_ACCESS_INSTANCED_PROP(CommonProps, _FillColor);
+
+				// // #if UNITY_SINGLE_PASS_STEREO
+				
+				// // Swap color per eye : 
+				//if ( unity_StereoEyeIndex == 0 ) fillColor = float4(1, 0, 0, 1);
+				//if ( unity_StereoEyeIndex == 1 ) fillColor = float4(0, 1, 0, 1);
+				
+				// // Same effect via lerp 
+				// fillColor = lerp(float4(1, 0, 0, 1), float4(0, 1, 0, 1), unity_StereoEyeIndex );
+
+				// //#endif
+
 
 				// https://stackoverflow.com/a/11037052 :: asuint()
 
