@@ -1,8 +1,8 @@
 # Unity Quick Draw 
 
 * Draw 2D anti-aliased, GPU-instance-supported, 0 allocation shapes ( circle,line,arrow ) with one line of code in Unity
-* Draw Labels ( WIP ) 
-* Draw 3D Shapes ( WIP ) 
+* Draw Labels ( now supports vr single pass instancing ) 
+* Draw 3D Shapes ( somehow stable ) 
 
 ![](https://i.imgur.com/vaSg7r9.png)
 
