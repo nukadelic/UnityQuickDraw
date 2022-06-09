@@ -1,7 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
-using QuickDraw;
 
+namespace QuickDraw
+{
 public static class Draw 
 {
     public static Matrix4x4 matrix = Matrix4x4.identity;
@@ -80,3 +81,5 @@ public static class Draw
         } );
     }
 }
+}
+
