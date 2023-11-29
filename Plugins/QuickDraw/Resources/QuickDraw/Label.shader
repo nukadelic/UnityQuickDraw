@@ -9,6 +9,7 @@ Shader "Hidden/Shapes/Label"
 		Pass
 		{
 			ZWrite Off
+			ZTest Always
 			Cull off
 			Blend SrcAlpha OneMinusSrcAlpha
 

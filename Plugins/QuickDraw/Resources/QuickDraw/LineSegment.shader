@@ -5,12 +5,13 @@
 	}
 	SubShader
 	{
-		Tags { "RenderType"="Transparent" "Queue" = "Transparent+172" "DisableBatching" ="true"}
+		Tags { "RenderType"="Transparent" "Queue" = "Transparent+172" "DisableBatching" = "true"}
 		LOD 100
 
 		Pass
 		{
 		    ZWrite Off
+			ZTest Always
 		    Cull off
 		    Blend SrcAlpha OneMinusSrcAlpha
 		    
@@ -56,6 +57,7 @@
 				float2 uv : TEXCOORD0;
 				float4 vertex : SV_POSITION;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
+				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			v2f vert (appdata v)

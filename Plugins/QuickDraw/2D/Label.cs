@@ -5,6 +5,16 @@ namespace QuickDraw
 {
     public static class Label
     {
+        // https://www.branah.com/unicode-converter
+
+        public static char UnicodeDegree = '\u00b0'; // °
+        public static char UnicodeAlpha = '\u03b1'; // α
+        public static char UnicodeDelta = '\u03b4'; // δ
+        public static char UnicodeTriangleup = '\u25b2'; // ▲
+
+        public static string FormatFloat( float x ) => $"{( x >= 0 ? "+" : "")}{x:N2}";
+        public static string FormatDegrees( float x ) => FormatFloat( x ) + UnicodeDegree;
+
         public static string WinAltChars = " ☺☻♥♦♣♠•◘○◙♂♀♪♫☼►◄↕‼¶§▬↨↑↓→←∟↔▲▼ !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~⌂ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒáíóúñÑªº¿⌐¬½¼¡«»░▒▓│┤╡╢╖╕╣║╗╝╜╛┐└┴┬├─┼╞╟╚╔╩╦╠═╬╧╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀αßΓπΣσµτΦΘΩδ∞φε∩≡±≥≤⌠⌡÷≈°∙·√ⁿ²■ ";
 
         static Texture2D _tex;
