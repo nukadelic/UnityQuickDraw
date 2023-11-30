@@ -8,7 +8,7 @@ namespace QuickDraw
         static Mesh _mesh;
         static Material _mat;
         static MaterialPropertyBlock _block;
-
+        
         public static void Draw(Matrix4x4 matrix, Color color)
         {
             if (_mesh == null) _mesh = Tetrahedron();
@@ -17,10 +17,10 @@ namespace QuickDraw
 
             if (_block == null) _block = new MaterialPropertyBlock();
 
-            _block.SetColor("_FillColor", color);
-            _block.SetFloat("_AASmoothing" , Common.AASmoothing );
+            _block.SetColor( "_FillColor", color );
+            _block.SetFloat( "_AASmoothing" , Common.AASmoothing );
 
-            Graphics.DrawMesh(_mesh, matrix, _mat, 0, Common.camera , 0, _block);
+            Common.Render( _mesh, matrix, _mat, _block );
         }
 
         public static Mesh Tetrahedron()

@@ -51,7 +51,7 @@ namespace QuickDraw.Demo
 
                 if (drawLines && i > 0) Draw.line(points[i], points[i - 1], Color.magenta);
 
-                if (drawRods && i > 0 ) Draw.rod(points[i], points[ i - 1 ], Color.black);
+                if (drawRods && i > 0 ) Draw.rod(points[i], points[ i - 1 ], Color.cyan);
             }
 
             // Draw Axis 

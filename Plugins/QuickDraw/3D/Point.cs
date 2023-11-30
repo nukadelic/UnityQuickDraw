@@ -21,7 +21,7 @@ namespace QuickDraw
             _block.SetColor("_FillColor", color);
             _block.SetFloat("_AASmoothing", Common.AASmoothing );
 
-            Graphics.DrawMesh(_mesh, matrix, _mat, 0, Common.camera , 0, _block);
+            Common.Render( _mesh, matrix, _mat, _block );
         }
 
         public static Mesh Octahedron()

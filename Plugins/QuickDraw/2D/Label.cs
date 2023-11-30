@@ -48,7 +48,7 @@ namespace QuickDraw
 
             while( label.Length < 3 ) label += ' ';
 
-            var rotation = Quaternion.LookRotation(Common.normal);
+            var rotation = Quaternion.identity; // Quaternion.LookRotation(Common.normal);
 
             if ( label.Length > 3 )
             {
@@ -81,7 +81,7 @@ namespace QuickDraw
 
             var m = Matrix4x4.TRS( position, Quaternion.LookRotation( Common.normal ), scale );
 
-            Graphics.DrawMesh( _mesh, m, _mat, 0, Common.camera, 0, _block );
+            Common.Render(_mesh, m, _mat, _block);
         }
 
         public static Mesh Quad()

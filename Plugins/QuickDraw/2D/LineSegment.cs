@@ -353,8 +353,7 @@ namespace QuickDraw
 
 			FillPropertyBlock(materialPropertyBlock, lineInfo, lineLength);
 			
-			Graphics.DrawMesh(lineSegmentMesh,matrix,lineMaterial,0,Common.camera, 0,materialPropertyBlock);
-
+			Common.Render(lineSegmentMesh, matrix, lineMaterial, materialPropertyBlock);
 
 			if (lineInfo.endArrow)
 			{

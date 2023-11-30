@@ -27,6 +27,22 @@ namespace QuickDraw
             return m;
         } }
 
+        #region Render
+
+        public static void Render( Mesh _mesh, Matrix4x4 _matrix, Material _mat, MaterialPropertyBlock _block )
+        {
+            var renderParams = new RenderParams( _mat );
+            
+            renderParams.matProps = _block;
+
+            // if ( Common.camera != null ) renderParams.camera = Common.camera;
+            
+            Graphics.RenderMesh(renderParams, _mesh, 0, _matrix );
+
+            // Graphics.DrawMesh(_mesh, matrix, _mat, 0, Common.camera , 0, _block);
+        }
+
+        #endregion
 
         #region Render Queue
         static int _renderQueueCurrent = 3175; // This plugin render queue range : [ 3170 - 3190 ]
